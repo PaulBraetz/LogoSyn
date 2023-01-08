@@ -11,7 +11,7 @@ InterpreterInfo.PackageHash:sKNuClGw26LrIFcTW2fs/w==
 InterpreterInfo.PackageHash.Algorithm.Name:md5
 
 {
-	const String SOURCE_NAME = "README_source.icdf";
+	const String SOURCE_NAME = "README_source.ls";
     var source = new FileInfo(SOURCE_NAME);
     DocumentContext.TargetFilePath = @"README.md";
 }# LogoSyn #
