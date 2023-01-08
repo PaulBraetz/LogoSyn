@@ -1,0 +1,21 @@
+{
+  "profiles": {
+    "Cli Compile": {
+      "commandName": "Project",
+      "commandLineArgs": ".\\source.ls",
+      "workingDirectory": "C:\\Users\\PC\\Documents\\Projects\\PaulBraetz\\LogoSyn\\Apps\\TestFiles"
+    },
+    "Cli Package Echo": {
+      "commandName": "Project",
+      "commandLineArgs": "-p -pd \"../../../../../Echo/bin/Release/net6.0/publish\" -pi \"../../../../../Echo/bin/Release/net6.0/PackageInfo.json\" -pt \"../../../../../TestFiles/Packages\" -pm \"../../../../../TestFiles/Packages/Manifest.json\""
+    },
+    "Cli Package Parser": {
+      "commandName": "Project",
+      "commandLineArgs": "-p -pd \"../../../../../Parser/CSharpParser/bin/Release/net6.0/publish\" -pi \"../../../../../Parser/CSharpParser/bin/Release/net6.0/PackageInfo.json\" -pt \"../../../../../TestFiles/Packages\" -pm \"../../../../../TestFiles/Packages/Manifest.json\""
+    },
+    "Cli Package Interpreter": {
+      "commandName": "Project",
+      "commandLineArgs": "-p -pd \"../../../../../Interpreter/CSharpInterpreter/bin/Release/net6.0/publish\" -pi \"../../../../../Interpreter/CSharpInterpreter/bin/Release/net6.0/PackageInfo.json\" -pt \"../../../../../TestFiles/Packages\" -pm \"../../../../../TestFiles/Packages/Manifest.json\""
+    }
+  }
+}

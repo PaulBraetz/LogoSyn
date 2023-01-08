@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CSharpInterpreter": {
+      "commandName": "Project",
+      "commandLineArgs": "-s \"Dom.json\"",
+      "workingDirectory": "C:\\Users\\PC\\Documents\\Projects\\PaulBraetz\\LogoSyn\\Apps\\TestFiles"
+    }
+  }
+}

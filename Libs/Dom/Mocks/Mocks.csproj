@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <AssemblyName>RhoMicro.LogoSyn.Libs.Dom.Tests.$(MSBuildProjectName)</AssemblyName>
+	  <RootNamespace>RhoMicro.LogoSyn.Libs.Dom.Tests.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.csproj" />
+    <ProjectReference Include="..\Dom.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant ".icdf File" as in
+participant "Parser" as parser
+participant "Document Object Model" as dom
+participant "Interpreter" as interpreter
+participant "Output File" as out
+
+activate in
+in -> parser
+activate parser
+parser -> dom
+deactivate parser
+activate dom
+dom -> interpreter
+deactivate dom
+activate interpreter
+interpreter -> out
+deactivate interpreter
+activate out
+deactivate out
+
+@enduml

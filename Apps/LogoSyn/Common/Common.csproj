@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DocumentationFile></DocumentationFile>
+		<AssemblyName>RhoMicro.LogoSyn.Apps.LogoSyn.$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>RhoMicro.LogoSyn.Apps.LogoSyn.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<WarningsAsErrors>$(WarningsAsErrors);NU1605;1591;1573;1712</WarningsAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <WarningsAsErrors>$(WarningsAsErrors);NU1605;1591;1573;1712</WarningsAsErrors>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Packaging\Hashing\**" />
+	  <EmbeddedResource Remove="Packaging\Hashing\**" />
+	  <None Remove="Packaging\Hashing\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="RhoMicro.Common" Version="3.0.0" />
+		<PackageReference Include="RhoMicro.Fort" Version="1.2.0" />
+		<PackageReference Include="RhoMicro.Scli" Version="1.2.0" />
+		<PackageReference Include="RhoMicro.Serialization" Version="1.1.2">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Libs\Common\Common.csproj" />
+	</ItemGroup>
+
+</Project>

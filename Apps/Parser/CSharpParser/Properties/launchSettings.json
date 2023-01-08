@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSharpParser": {
+      "commandName": "Project",
+      "commandLineArgs": "-o 12 -s \"../../../../../TestFiles/Source.ls\" -t \"../../../../../TestFiles/Dom.json\""
+    }
+  }
+}
