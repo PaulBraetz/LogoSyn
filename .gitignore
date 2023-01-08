@@ -371,3 +371,4 @@ FodyWeavers.xsd
 /Apps/TestFiles/Target.md
 /Apps/TestFiles/Target.md.bak
 /Releases
+*.bak
