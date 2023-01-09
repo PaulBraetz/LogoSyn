@@ -57,6 +57,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Apps\Common\Commo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpParser", "Apps\Parser\CSharpParser\CSharpParser.csproj", "{24515815-152D-425C-9FB1-ABC7E375F6EA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watcher", "Apps\LogoSyn\Watcher\Watcher.csproj", "{A1CD28F7-3647-43C8-8D99-DCA4F44A1B6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +133,10 @@ Global
 		{24515815-152D-425C-9FB1-ABC7E375F6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24515815-152D-425C-9FB1-ABC7E375F6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24515815-152D-425C-9FB1-ABC7E375F6EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1CD28F7-3647-43C8-8D99-DCA4F44A1B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1CD28F7-3647-43C8-8D99-DCA4F44A1B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1CD28F7-3647-43C8-8D99-DCA4F44A1B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1CD28F7-3647-43C8-8D99-DCA4F44A1B6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -161,6 +167,7 @@ Global
 		{FE8E35C5-4690-4ECE-B33F-8DA7DC0AA574} = {D112E09F-8205-49B0-AF05-E21D6859A2B4}
 		{54C0E2A4-562B-4B96-861F-0AD7F04C772D} = {FE8E35C5-4690-4ECE-B33F-8DA7DC0AA574}
 		{24515815-152D-425C-9FB1-ABC7E375F6EA} = {D89CD4D8-5CB3-45AB-ACDA-EDC11A6C7516}
+		{A1CD28F7-3647-43C8-8D99-DCA4F44A1B6E} = {183D87D1-0A67-4822-AE71-EA3C2DF17102}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A260DEF4-194D-4C9C-8E6E-B5574906F785}

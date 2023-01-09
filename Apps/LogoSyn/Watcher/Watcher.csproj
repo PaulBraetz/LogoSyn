@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <OutputType>Exe</OutputType>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+	  <Version>0.0.1</Version>
+	  <GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <DocumentationFile></DocumentationFile>
+	  <AssemblyName>lswatch</AssemblyName>
+	  <RootNamespace>RhoMicro.LogoSyn.Apps.LogoSyn.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RhoMicro.Fort" Version="1.3.0" />
+    <PackageReference Include="RhoMicro.Scli" Version="1.2.0" />
+	  <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
+
+</Project>

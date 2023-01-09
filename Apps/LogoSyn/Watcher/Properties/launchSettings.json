@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Watcher": {
+      "commandName": "Project",
+      "commandLineArgs": ".\\source.ls",
+      "workingDirectory": "C:\\Users\\PC\\Documents\\Projects\\PaulBraetz\\LogoSyn\\Apps\\TestFiles"
+    }
+  }
+}

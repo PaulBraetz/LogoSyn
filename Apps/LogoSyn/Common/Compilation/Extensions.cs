@@ -59,6 +59,9 @@ namespace RhoMicro.LogoSyn.Apps.LogoSyn.Common.Compilation
 				await parserProcess.StandardError.BaseStream.CopyToAsync(standardError!);
 				await interpreterProcess.StandardError.BaseStream.CopyToAsync(standardError!);
 			}
+
+			await parserProcess.WaitForExitAsync(cancellationToken);
+			await interpreterProcess.WaitForExitAsync(cancellationToken);
 		}
 		private static async Task<Process> GetProcess(IPackageInvocationInfo info,
 			IPackageLoader loader,

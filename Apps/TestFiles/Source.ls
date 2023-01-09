@@ -1,13 +1,13 @@
 ParserInfo.PackageName:CSharpParser
 ParserInfo.PackageVersion:0.0.1
 ParserInfo.Arguments:
-ParserInfo.PackageHash:/T/GqLoAvJ4AmMoaALARnHeuv0eOFesFm8+ulyH6Bj57vme5AfWwJpnPwQWMr5OD12OQ/k0uP2u9c8t+C8+/2g==
+ParserInfo.PackageHash:HPKCm6IuUmqWRStXf/fyTu639yZkoMemREspa1Q4ykQLi/V5OSP4KkNbtfkBzGU4DrcbN45Cbc/qb+6qcW4DBg==
 ParserInfo.PackageHash.Algorithm.Name:sha512
 
 InterpreterInfo.PackageName:CSharpInterpreter
 InterpreterInfo.PackageVersion:0.0.1
 InterpreterInfo.Arguments:
-InterpreterInfo.PackageHash:Q4Clrwl3MCrC63g0TvHaMNHo1KFIkOxev+EJ9qZOrUg5WSnVyLACwqkRC7wOKcfZPUJkrPpFQL0YDZoiR6bbLw==
+InterpreterInfo.PackageHash:DRNZZM/zoG/x4HKsvMQX+uvA4NXqk3t5dPM1okhMIOfy1f18Gb9pe2CNLnSCw62hJZuZQ32y07CqQV3zCsIAHQ==
 InterpreterInfo.PackageHash.Algorithm.Name:sha512
 
 {
