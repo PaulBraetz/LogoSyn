@@ -7,7 +7,7 @@ Due its extensible nature, it may be used to:
 * Implement Literate Programming Techniques
 * Enhance Documentation
 
-*Note: this readme was generated on 08.01.2023 18:59:03 using README_source.ls*
+*Note: this readme was generated on 10.01.2023 19:38:12 using README_source.ls*
 
 ---
 ## **Features** ##
@@ -15,7 +15,8 @@ Due its extensible nature, it may be used to:
 * Discriminator-based .icdf Document Parsing
 * Generalized DOM Abstraction
 * Extensible Configurations
-* Proof of Concept C# Parser & Interpreter
+* Prerelease Default Parser
+* Proof of Concept C# Interpreter
 
 ---
 ## **Versioning** ##
@@ -28,6 +29,25 @@ ICDF uses [Semantic Versioning 2.0.0](https://semver.org/).
 Download the latest release on the [GitHub Release View](https://github.com/PaulBraetz/LogoSyn/Releases).
 Depending on your installation directory and system, it may be necessary to adjust the manifest file found at `Packages/Manifest.json`.
 By default, it will assume packages to reside in the `C:/Program Files/LogoSyn/Packages` directory.
+
+Make sure that your path variables include the installation directory, enabling you to directly use the `lswatch` and `logosyn` commands.
+
+*Unfortunately, currently only the Windows ("Portable") release is working as intended.*
+
+---
+## **Quick Start Using Visual Studio Code** ##
+
+1. Copy the sample source file to a directory of your choice
+2. Open the directory in VSCode
+3. Open source file in a VSCode panel
+4. Open terminal and navigate to working directory
+5. Start lswatcher, providing your source file as the argument
+6. Save your source file
+7. Open the generated markdown file
+8. Pin a preview of the generated file on the right panel
+9. Done!
+
+![video](https://static.rhomicro.com/files/videos/logosyn/quickstart.webm)
 
 ---
 ## **Compiling** ##
