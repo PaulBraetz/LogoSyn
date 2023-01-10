@@ -7,7 +7,7 @@ Due its extensible nature, it may be used to:
 * Implement Literate Programming Techniques
 * Enhance Documentation
 
-*Note: this readme was generated on 10.01.2023 19:47:35 using README_source.ls*
+*Note: this readme was generated on 10.01.2023 19:52:11 using README_source.ls*
 
 ---
 ## **Features** ##
@@ -135,7 +135,7 @@ The aforementioned `Print(String)` method is in-scope, enabling the printing of 
 ```
 is equivalent to writing:
 ```
-I want this printed!
+I want this string printed!
 ```
 *Emulating a literal element using the `Print(String)` method.*
 

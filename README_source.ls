@@ -152,7 +152,9 @@ The aforementioned `Print(String)` method is in-scope, enabling the printing of 
 ```
 is equivalent to writing:
 ```
-I want this printed!
+{
+	Print("I want this string printed!");
+}
 ```
 *Emulating a literal element using the `Print(String)` method.*
 
