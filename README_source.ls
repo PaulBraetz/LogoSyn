@@ -54,7 +54,7 @@ Make sure that your path variables include the installation directory, enabling 
 ---
 ## **Quick Start Using Visual Studio Code** ##
 
-1. Copy the sample source file to a directory of your choice
+1. Copy the sample [source file](https://github.com/PaulBraetz/LogoSyn/blob/master/Apps/TestFiles/Source.ls) to a directory of your choice
 2. Open the directory in VSCode
 3. Open source file in a VSCode panel
 4. Open terminal and navigate to working directory
