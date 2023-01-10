@@ -64,8 +64,6 @@ Make sure that your path variables include the installation directory, enabling 
 8. Pin a preview of the generated file on the right panel
 9. Done!
 
-![video](https://static.rhomicro.com/files/videos/logosyn/quickstart.webm)
-
 ---
 ## **Compiling** ##
 
