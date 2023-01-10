@@ -7,7 +7,7 @@ Due its extensible nature, it may be used to:
 * Implement Literate Programming Techniques
 * Enhance Documentation
 
-*Note: this readme was generated on 10.01.2023 19:41:12 using README_source.ls*
+*Note: this readme was generated on 10.01.2023 19:44:47 using README_source.ls*
 
 ---
 ## **Features** ##
@@ -46,6 +46,8 @@ Make sure that your path variables include the installation directory, enabling 
 7. Open the generated markdown file
 8. Pin a preview of the generated file on the right panel
 9. Done!
+
+[QuickStart.webm](https://user-images.githubusercontent.com/95855091/211635304-a5cd8129-c1d9-40b5-a5e7-44086efb4605.webm)
 
 ---
 ## **Compiling** ##

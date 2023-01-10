@@ -64,6 +64,8 @@ Make sure that your path variables include the installation directory, enabling 
 8. Pin a preview of the generated file on the right panel
 9. Done!
 
+[QuickStart.webm](https://user-images.githubusercontent.com/95855091/211635304-a5cd8129-c1d9-40b5-a5e7-44086efb4605.webm)
+
 ---
 ## **Compiling** ##
 
