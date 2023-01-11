@@ -1,4 +1,54 @@
-# LogoSyn #
+using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace MyDocument
+{
+	public sealed class Document
+	{
+		public sealed class Context
+		{
+			public Context()
+			{
+
+			}
+
+			public String TargetFilePath { get; set; }
+
+			public String IntermediateResultFilePath { get; set; }
+		}
+
+		public Document(Action<String> print)
+		{
+			if(print == null)
+			{
+				throw new ArgumentNullException("print");
+			}
+
+			Print = o => print.Invoke(o?.ToString() ?? String.Empty); 
+		}
+
+		private readonly Action<Object> Print;
+		public Context DocumentContext { get; } = new Context();
+
+		public void Execute()
+		{
+/*0->212*/
+
+	const String SOURCE_NAME = "README_source.ls";
+    var source = new FileInfo(SOURCE_NAME);
+	//DocumentContext.IntermediateResultFilePath = @"Intermediate.cs";
+    DocumentContext.TargetFilePath = @"README.md";
+
+/*212->494*/
+Print.Invoke(@"# LogoSyn #
 
 LogoSyn is a document format specification that intersperses textual with programatic elements.
 
@@ -7,12 +57,20 @@ Due its extensible nature, it may be used to:
 * Implement Literate Programming Techniques
 * Enhance Documentation
 
-*Note: this readme was generated on 11.01.2023 22:27:25 using README_source.ls*
+*Note: this readme was generated on ");
+/*494->581*/
+Print(DateTime.Now.ToString(System.Globalization.CultureInfo.GetCultureInfo("de-De")));
+/*581->588*/
+Print.Invoke(@" using ");
+/*588->607*/
+Print(SOURCE_NAME);
+/*607->2462*/
+Print.Invoke(@"*
 
 ---
 ## **Features** ##
 
-* Discriminator-based .ls Document Parsing
+* Discriminator-based .icdf Document Parsing
 * Generalized DOM Abstraction
 * Extensible Configurations
 * Prerelease Default Parser
@@ -32,7 +90,7 @@ By default, it will assume packages to reside in the `C:/Program Files/LogoSyn/P
 
 Make sure that your path variables include the installation directory, enabling you to directly use the `lswatch` and `logosyn` commands.
 
-*Unfortunately, currently only the Windows ("Portable") release is working as intended.*
+*Unfortunately, currently only the Windows (""Portable"") release is working as intended.*
 
 ---
 ## **Quick Start Using Visual Studio Code** ##
@@ -59,66 +117,35 @@ Using the `logosyn` application, it is possible to compile documents and manage 
 Using the command `> logosyn .\Source.ls` is equivalent to using the command `> logosyn -c -cs .\Source.ls`.
 
 ### Arguments ###
-#### *Compilation* ####
+");
+/*2462->3419*/
 
-`-c` or `--compile`:
-```
-When set, source documents may be compiled.
-```
+	void printStaticParameters(String path)
+	{
+		var sourceText = File.ReadAllText(path);
 
-`-cs` or `--compileSource`:
-```
-Supplies the .ls source file path
-```
+		const String constPattern = @"(?<=(private|public|protected|internal){0,2}\sconst\s([a-zA-Z_]*[a-zA-Z0-9_]*)\s)([a-zA-Z_]*[a-zA-Z0-9_]*)\s?=\s?(.*)(?=;)";
 
-`-cm` or `--compileManifests`:
-```
-Supplies a comma-delimited list of local manifest files. If none are provided, an attempt will be made to locate a file at "Packages" in the executing directory and named "Manifest" and use it.
-```
+		var constants = Regex.Matches(
+			sourceText, 
+			constPattern,
+			RegexOptions.Multiline | RegexOptions.CultureInvariant)
+			.Select(m => m.Value.Split('=', StringSplitOptions.TrimEntries))
+			.ToDictionary(a => $"{{{a[0]}}}", a => Regex.Replace(a[1], "\"", String.Empty));
 
-`-ct` or `--compileTarget`:
-```
-Supplies the target file to which to write the compilation result.
-```
+		const String parametersPattern = 
+			@"(?<=_parameters\.TryAdd\([^;]*")[^;]*(?="[^;]*\);)";
+		const String parametersReplaceLineBreakPattern = @"((\r|\n)|(\""\s?\+\s?(\s|\t)*\$\""))";
+		const String parametersSplitPattern = @"\"",(\s|\t|\r|\n)*\""";
 
-`-ce` or `--compileError`:
-```
-Supplies the file to which to write error details, should any arise.
-```
+		
+	}
 
-#### *Packaging* ####
+	printStaticParameters("Apps/LogoSyn/Common/Compilation/CompilationContextFactory.cs");
+	printStaticParameters("Apps/LogoSyn/Common/Packaging/PackagingContextFactory.cs");
 
-`-p` or `--package`:
-```
-When set, packages may be managed.
-```
-
-`-ph` or `--packageHeadless`:
-```
-When set, packages may be managed headlessly.
-```
-
-`-pi` or `--packageInfo`:
-```
-Supplies the package information file for creating a package.
-```
-
-`-pd` or `--packageDirectory`:
-```
-Supplies the package data directory containing all files required for creating a package.
-```
-
-`-pt` or `--packageTarget`:
-```
-Supplies the target directory for the package created.
-```
-
-`-pm` or `--packageManifest`:
-```
-Supplies the manifest file for registering the package created.
-```
-
-
+/*3419->6193*/
+Print.Invoke(@"
 
 ---
 ## **Document Instructions** ##
@@ -173,7 +200,11 @@ Escaping the curlybraces: \{ \}
 Escaping the backslash: \\
 ```
 
-*Taking a look at the [README_source.ls](https://github.com/PaulBraetz/LogoSyn/blob/master/README_source.ls) file, the recursive nature of escaping tokens becomes apparent.*
+*Taking a look at the [");
+/*6193->6212*/
+Print(SOURCE_NAME);
+/*6212->7071*/
+Print.Invoke(@"](https://github.com/PaulBraetz/LogoSyn/blob/master/README_source.ls) file, the recursive nature of escaping tokens becomes apparent.*
 
 #### **The CSharpInterpreter Package** ####
 As of version 0.0.1, the `CSharpInterpreter` package will embed code elements into a generated method.
@@ -196,14 +227,25 @@ Therefore, all code elements must correctly compile when sequentially arranged i
 The aforementioned `Print(String)` method is in-scope, enabling the printing of computed data to the resulting document.
 ```
 {
-	Print("I want this string printed!");
+	Print(""I want this string printed!"");
 }
 ```
 is equivalent to writing:
 ```
-I want this string printed!
+");
+/*7071->7111*/
+
+	Print("I want this string printed!");
+
+/*7111->7571*/
+Print.Invoke(@"
 ```
 *Emulating a literal element using the `Print(String)` method.*
+
+---
+## **Packaging** ##
+
+TODO
 
 ---
 ## **Planned Features** ##
@@ -221,4 +263,8 @@ This project is licensed to you under the [MIT License](https://github.com/PaulB
 
 * [Paul Braetz](https://github.com/PaulBraetz/)
 
----
+---");
+
+		}
+	}
+}

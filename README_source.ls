@@ -13,7 +13,7 @@ InterpreterInfo.PackageHash.Algorithm.Name:md5
 {
 	const String SOURCE_NAME = "README_source.ls";
     var source = new FileInfo(SOURCE_NAME);
-	DocumentContext.IntermediateResultFilePath = @"Intermediate.cs";
+	//DocumentContext.IntermediateResultFilePath = @"Intermediate.cs";
     DocumentContext.TargetFilePath = @"README.md";
 }# LogoSyn #
 
@@ -29,7 +29,7 @@ Due its extensible nature, it may be used to:
 ---
 ## **Features** ##
 
-* Discriminator-based .icdf Document Parsing
+* Discriminator-based .ls Document Parsing
 * Generalized DOM Abstraction
 * Extensible Configurations
 * Prerelease Default Parser
@@ -69,7 +69,62 @@ Make sure that your path variables include the installation directory, enabling 
 ---
 ## **Compiling** ##
 
-TODO
+Using the `logosyn` application, it is possible to compile documents and manage packages:
+
+[CompileScreenShot.png](https://static.rhomicro.com/files/images/github/logosyn/CompileScreenShot.png)
+
+Using the command `> logosyn .\Source.ls` is equivalent to using the command `> logosyn -c -cs .\Source.ls`.
+
+### Arguments ###
+{
+	void printStaticParameters(String path, String context)
+	{
+		var sourceText = File.ReadAllText(path);
+
+		const String constPattern = @"(?<=(private|public|protected|internal){0,2}\sconst\s([a-zA-Z_]*[a-zA-Z0-9_]*)\s)([a-zA-Z_]*[a-zA-Z0-9_]*)\s?=\s?(.*)(?=;)";
+
+		var constants = Regex.Matches(sourceText, constPattern)
+			.Select(m => m.Value.Split('=', StringSplitOptions.TrimEntries))
+			.ToDictionary(a => $"{{{a[0]}}}", a => Regex.Replace(a[1], "\"", String.Empty));
+
+		const String parametersPattern = 
+			@"(?<=_parameters\.TryAdd\([^;]*\"")[^;]*(?=\""[^;]*\);)";
+		const String parametersReplaceLineBreakPattern = @"((\r|\n)|(\""\s?\+\s?(\s|\t)*\$\""))";
+		const String parametersSplitPattern = @"\"",(\s|\t|\r|\n)*\""";
+
+		var parameters = Regex.Matches(sourceText, parametersPattern)
+			.Select(m => Regex.Replace(m.Value, parametersReplaceLineBreakPattern, String.Empty))
+			.SelectMany(p => Regex.Split(p, parametersSplitPattern))
+			.Where(s=>!String.IsNullOrWhiteSpace(s))
+			.Select(p =>
+			{
+				var result = p;
+				
+				foreach(var constant in constants)
+				{
+					result = result.Replace(constant.Key, constant.Value);
+				}	
+				
+				result = result.Replace(@"\""", "\""); 
+
+				return result;
+			})
+			.Select((e, i)=>(group: i/3, element: e))
+			.GroupBy(t=>t.group)
+			.Select(g=>g.Select(t=>t.element).ToArray())
+			.Select(a=>
+				a.Length == 3 ?
+				$"`-{a[0]}` or `--{a[1]}`:\n```\n{a[2]}\n```" :
+				String.Join(", ", a));
+
+		Print($"#### *{context}* ####\n\n");
+		Print(String.Join("\n\n", parameters));	
+		Print("\n\n");
+	}
+
+	printStaticParameters("Apps/LogoSyn/Common/Compilation/CompilationContextFactory.cs", "Compilation");
+	printStaticParameters("Apps/LogoSyn/Common/Packaging/PackagingContextFactory.cs", "Packaging");
+}
 
 ---
 ## **Document Instructions** ##
@@ -157,11 +212,6 @@ is equivalent to writing:
 }
 ```
 *Emulating a literal element using the `Print(String)` method.*
-
----
-## **Packaging** ##
-
-TODO
 
 ---
 ## **Planned Features** ##
