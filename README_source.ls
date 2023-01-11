@@ -38,7 +38,7 @@ Due its extensible nature, it may be used to:
 ---
 ## **Versioning** ##
 
-ICDF uses [Semantic Versioning 2.0.0](https://semver.org/).
+LogoSyn uses [Semantic Versioning 2.0.0](https://semver.org/).
 
 ---
 ## **Installation** ##
@@ -70,10 +70,6 @@ Make sure that your path variables include the installation directory, enabling 
 ## **Compiling** ##
 
 Using the `logosyn` application, it is possible to compile documents and manage packages:
-
-[CompileScreenShot.png](https://static.rhomicro.com/files/images/github/logosyn/CompileScreenShot.png)
-
-Using the command `> logosyn .\Source.ls` is equivalent to using the command `> logosyn -c -cs .\Source.ls`.
 
 ### Arguments ###
 {
@@ -121,10 +117,11 @@ Using the command `> logosyn .\Source.ls` is equivalent to using the command `> 
 		Print(String.Join("\n\n", parameters));	
 		Print("\n\n");
 	}
-
-	printStaticParameters("Apps/LogoSyn/Common/Compilation/CompilationContextFactory.cs", "Compilation");
-	printStaticParameters("Apps/LogoSyn/Common/Packaging/PackagingContextFactory.cs", "Packaging");
 }
+Using the command `> logosyn .\Source.ls` is equivalent to using the command `> logosyn -c -cs .\Source.ls`.
+{printStaticParameters("Apps/LogoSyn/Common/Compilation/CompilationContextFactory.cs", "Compilation");}
+
+{printStaticParameters("Apps/LogoSyn/Common/Packaging/PackagingContextFactory.cs", "Packaging");}
 
 ---
 ## **Document Instructions** ##

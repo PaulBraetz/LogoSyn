@@ -7,7 +7,7 @@ Due its extensible nature, it may be used to:
 * Implement Literate Programming Techniques
 * Enhance Documentation
 
-*Note: this readme was generated on 11.01.2023 22:27:25 using README_source.ls*
+*Note: this readme was generated on 11.01.2023 22:35:14 using README_source.ls*
 
 ---
 ## **Features** ##
@@ -21,7 +21,7 @@ Due its extensible nature, it may be used to:
 ---
 ## **Versioning** ##
 
-ICDF uses [Semantic Versioning 2.0.0](https://semver.org/).
+LogoSyn uses [Semantic Versioning 2.0.0](https://semver.org/).
 
 ---
 ## **Installation** ##
@@ -54,11 +54,9 @@ Make sure that your path variables include the installation directory, enabling 
 
 Using the `logosyn` application, it is possible to compile documents and manage packages:
 
-[CompileScreenShot.png](https://static.rhomicro.com/files/images/github/logosyn/CompileScreenShot.png)
+### Arguments ###
 
 Using the command `> logosyn .\Source.ls` is equivalent to using the command `> logosyn -c -cs .\Source.ls`.
-
-### Arguments ###
 #### *Compilation* ####
 
 `-c` or `--compile`:
@@ -85,6 +83,8 @@ Supplies the target file to which to write the compilation result.
 ```
 Supplies the file to which to write error details, should any arise.
 ```
+
+
 
 #### *Packaging* ####
 
