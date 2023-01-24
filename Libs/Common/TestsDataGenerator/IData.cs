@@ -1,7 +1,6 @@
-﻿namespace RhoMicro.LogoSyn.Libs.Common.Tests.TestsDataGenerator
+﻿namespace RhoMicro.LogoSyn.Libs.Common.Tests.TestsDataGenerator;
+
+internal interface IData
 {
-	internal interface IData
-	{
-		void WriteToFile(Int32 minimumCount);
-	}
+	void WriteToFile(Int32 minimumCount);
 }

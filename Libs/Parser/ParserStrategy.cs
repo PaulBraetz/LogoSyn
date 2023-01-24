@@ -1,33 +1,33 @@
 ﻿using Fort;
-using RhoMicro.LogoSyn.Libs.Dom.Abstractions;
+
+using RhoMicro.LogoSyn.Libs.Dom.Dom.Abstractions;
 using RhoMicro.LogoSyn.Libs.Parser.Abstractions;
 
-namespace RhoMicro.LogoSyn.Libs.Parser
+namespace RhoMicro.LogoSyn.Libs.Parser;
+
+/// <summary>
+/// Strategy based implementation of <see cref="IParser"/>.
+/// </summary>
+/// <typeparam name="TDiscriminator">
+/// The discriminator by which to distinguish elements.
+/// </typeparam>
+internal sealed class ParserStrategy<TDiscriminator> : Parser<TDiscriminator>
 {
-	/// <summary>
-	/// Strategy based implementation of <see cref="IParser"/>.
-	/// </summary>
-	/// <typeparam name="TDiscriminator">
-	/// The discriminator by which to distinguish elements.
-	/// </typeparam>
-	internal sealed class ParserStrategy<TDiscriminator> : Parser<TDiscriminator>
+	private readonly Func<TextReader, IDom<TDiscriminator>> _strategy;
+
+	public ParserStrategy(Func<TextReader, IDom<TDiscriminator>> strategy)
 	{
-		private readonly Func<TextReader, IDom<TDiscriminator>> _strategy;
+		strategy.ThrowIfDefault(nameof(strategy));
 
-		public ParserStrategy(Func<TextReader, IDom<TDiscriminator>> strategy)
-		{
-			strategy.ThrowIfDefault(nameof(strategy));
+		_strategy = strategy;
+	}
 
-			_strategy = strategy;
-		}
+	protected override IDom<TDiscriminator> Parse(TextReader reader)
+	{
+		reader.ThrowIfDefault(nameof(reader));
 
-		protected override IDom<TDiscriminator> Parse(TextReader reader)
-		{
-			reader.ThrowIfDefault(nameof(reader));
+		var dom = _strategy.Invoke(reader);
 
-			var dom = _strategy.Invoke(reader);
-
-			return dom;
-		}
+		return dom;
 	}
 }

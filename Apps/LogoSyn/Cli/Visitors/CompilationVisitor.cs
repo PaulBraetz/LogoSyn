@@ -1,34 +1,35 @@
 ﻿using Fort;
+
 using RhoMicro.Common.System.Abstractions;
 using RhoMicro.LogoSyn.Apps.LogoSyn.Common.Abstractions;
+
 using Scli;
 
-namespace RhoMicro.LogoSyn.Apps.LogoSyn.Cli.Visitors
+namespace RhoMicro.LogoSyn.Apps.LogoSyn.Cli.Visitors;
+
+internal sealed class CompilationVisitor : AsyncVisitorBase<IApplicationContext>
 {
-	internal sealed class CompilationVisitor : AsyncVisitorBase<IApplicationContext>
+	private readonly Boolean _canReceive;
+
+	public CompilationVisitor(IArgumentCollection arguments)
 	{
-		private readonly Boolean _canReceive;
+		arguments.ThrowIfDefault(nameof(arguments));
 
-		public CompilationVisitor(IArgumentCollection arguments)
+		_canReceive = !arguments.TryGet("h", out var _);
+	}
+
+	protected override async Task Receive(IApplicationContext obj, CancellationToken cancellationToken = default)
+	{
+		if(obj is ICompilationContext compilationContext)
 		{
-			arguments.ThrowIfDefault(nameof(arguments));
-
-			_canReceive = !arguments.TryGet("h", out var _);
+			await compilationContext.Compile(cancellationToken);
 		}
+	}
 
-		protected override async Task Receive(IApplicationContext obj, CancellationToken cancellationToken = default)
-		{
-			if (obj is ICompilationContext compilationContext)
-			{
-				await compilationContext.Compile(cancellationToken);
-			}
-		}
+	protected override Task<Boolean> CanReceive(IApplicationContext obj, CancellationToken cancellationToken = default)
+	{
+		var result = _canReceive && obj is ICompilationContext;
 
-		protected override Task<Boolean> CanReceive(IApplicationContext obj, CancellationToken cancellationToken = default)
-		{
-			var result = _canReceive && obj is ICompilationContext;
-
-			return Task.FromResult(result);
-		}
+		return Task.FromResult(result);
 	}
 }

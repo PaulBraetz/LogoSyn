@@ -1,20 +1,14 @@
-﻿namespace RhoMicro.LogoSyn.Libs.Common.Tests.TestsDataGenerator
+﻿using RhoMicro.LogoSyn.Libs.Common.Tests.TestsDataGenerator;
+using RhoMicro.LogoSyn.Libs.Common.Tests.TestsDataGenerator.StringSlice;
+
+var count = 25;
+
+var dataSources = new IData[]
 {
-	internal class Program
-	{
-		static void Main(String[] args)
-		{
-			var count = 25;
+			new Data()
+};
 
-			var dataSources = new IData[]
-			{
-				new StringSlice.Data()
-			};
-
-			foreach (var source in dataSources)
-			{
-				source.WriteToFile(count);
-			}
-		}
-	}
+foreach(var source in dataSources)
+{
+	source.WriteToFile(count);
 }
