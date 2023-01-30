@@ -1,28 +1,41 @@
 # My Project
-*Note: this readme was generated on 24.01.2023 20:56:57 +00:00 using README_template.ls*
+*Note: this readme was generated on 30.01.2023 14:01:05 +00:00 using README_template.ls*
 
-## Description <a name="a81ad0c4-f7ec-4dd0-9f80-084a64dbe46f"></a>
+## Description <a name="db42a4e1-045b-4b40-9205-ad30aedde68a"></a>
 
-TODO
-## Table of Contents <a name="7925ca55-cfc9-4c47-9063-6caf3f56e3ee"></a>
 
-1. [Description](#a81ad0c4-f7ec-4dd0-9f80-084a64dbe46f)
+This is a readme file template, intended for use in conjunction with logosyn.
+## Table of Contents <a name="d8a1dd66-43b0-49d7-b542-5aaeeb9d23e9"></a>
 
-2. [Table of Contents](#7925ca55-cfc9-4c47-9063-6caf3f56e3ee)
+1. [Description](#db42a4e1-045b-4b40-9205-ad30aedde68a)
 
-3. [Features](#86ead423-2517-4eb7-916d-4ce37b6e5fb6)
+2. [Table of Contents](#d8a1dd66-43b0-49d7-b542-5aaeeb9d23e9)
 
-	3.1. [Feature 1](#2e475eeb-90c3-467a-894b-eb0aa76b9252)
+3. [Features](#5ed05ad1-4f11-4b36-b4d7-7b74021f0d3b)
 
-	3.2. [Feature 2](#c6c8f5d4-4a7f-4e0e-83ce-5cb5f277d513)
+	3.1. [Templated Sections](#55d4d86c-e4f5-4aea-9444-077a5a5c5330)
 
-## Features <a name="86ead423-2517-4eb7-916d-4ce37b6e5fb6"></a>
+	3.2. [Feature 2](#9b56470c-1c3b-4e49-aade-22e9c0426f33)
 
-* Short Description for Feature 1
-* Short Description for Feature 2
-### Feature 1 <a name="2e475eeb-90c3-467a-894b-eb0aa76b9252"></a>
+4. [License](#c517abc6-cc30-4119-ab9d-f9a3095909e9)
 
-TODO
-### Feature 2 <a name="c6c8f5d4-4a7f-4e0e-83ce-5cb5f277d513"></a>
+5. [Contributors](#a0a96d55-59f5-49ff-8913-14ff05ba85da)
 
-TODO
+## Features <a name="5ed05ad1-4f11-4b36-b4d7-7b74021f0d3b"></a>
+
+* Templated Sections
+* Feature 2
+### Templated Sections <a name="55d4d86c-e4f5-4aea-9444-077a5a5c5330"></a>
+
+
+
+### Feature 2 <a name="9b56470c-1c3b-4e49-aade-22e9c0426f33"></a>
+
+
+TODO: Long Description for Feature 2
+## License <a name="c517abc6-cc30-4119-ab9d-f9a3095909e9"></a>
+
+This software is licensed to you under the [MIT](LICENSE) license.
+## Contributors <a name="a0a96d55-59f5-49ff-8913-14ff05ba85da"></a>
+
+* [Paul Brätz](https://github.com/PaulBraetz/ "Go to Profile")

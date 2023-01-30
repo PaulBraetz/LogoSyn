@@ -11,42 +11,51 @@ InterpreterInfo.PackageHash:sKNuClGw26LrIFcTW2fs/w==
 InterpreterInfo.PackageHash.Algorithm.Name:md5
 
 {
+	//Data
 	//DocumentContext.IntermediateResultFilePath = @"Intermediate.cs";
     DocumentContext.TargetFilePath = @"README.md";
 
 	var template = new
 	{
 		Source = new FileInfo("README_template.ls"),
+		License = (name: "MIT", url: "LICENSE"),
 		Name = "My Project",
 		PrintGenerateDateInfo = true,
-		Description = "TODO\n",
-		Features = new[]{
-			(name: "Feature 1", shortDescription:"Short Description for Feature 1" ),
-			(name: "Feature 2", shortDescription:"Short Description for Feature 2" )
-		}
+		Description = ((Action)description),
+		Contributors = new[]
+			{
+				(name: "Paul Brätz", url: "https://github.com/PaulBraetz/")
+			},
+		Features = new (string name, Action content)[]
+			{
+				(name: "Templated Sections", content:feature1),
+				(name: "Feature 2", content:feature2)
+			}
 	};
-	var sections = new []
-		{
-			(name: "Description", depth: 1),
-			(name: "Table of Contents", depth: 1),
-			(name: "Features", depth: 1)
-		}.Concat(template.Features.Select(f=>(f.name, depth: 2)))
-		.Concat(new (String name, Int32 depth)[]
-		{
+	var featureSections = template.Features.Select(f=>(f.name, depth: 2, content:f.content));
+	IDictionary<string, (string name, int depth, Action content, Guid id)> sections = null;
+	sections = new (string name, int depth, Action content)[]
+	{
+		(name: "Description", depth: 1, content: description),
+		(name: "Table of Contents", depth: 1, content: tableOfContents),
+		(name: "Features", depth: 1, content: features)
+	}.Concat(featureSections)
+	.Concat(new (string name, int depth, Action content)[]
+	{
+		(name: "License", depth: 1, content:license),
+		(name: "Contributors", depth: 1, content:contributors)
+	})
+	.ToDictionary(t=>t.name, t=>(t.name, t.depth, t.content, id: Guid.NewGuid()));
+	//End Data
 
-		})
-		.ToDictionary(t=>t.name, t=>(t.name, t.depth, id: Guid.NewGuid()));    
-
-    void printSectionHeader(String name)
-    {
+	//Functions
+    void sectionHeader(String name){
         var section = sections[name];
         var tokens = String.Concat(Enumerable.Repeat('#', section.depth+1));
         var line = $"{tokens} {section.name} <a name=\"{section.id}\"></a>\n\n";
         Print(line);
-    }
-    
-    void printTableOfContents()
-    {
+    }    
+    void tableOfContents(){
         var sectionStack = new Stack<Int32>();
 
         foreach(var section in sections.Values)
@@ -74,29 +83,47 @@ InterpreterInfo.PackageHash.Algorithm.Name:md5
             Print(line);
         }
     }
+	void license(){
+		Print($"This software is licensed to you under the [{template.License.name}]({template.License.url}) license.\n");
+	}
+	void contributors(){
+		foreach(var contributor in template.Contributors)
+		{
+			Print($"* [{contributor.name}]({contributor.url} \"Go to Profile\")\n");
+		}
+	}
+	void features(){
+		foreach(var feature in template.Features)
+		{
+			Print($"* {feature.name}\n");
+		}
+	}
+	//End Functions
 
+	//Generation
 	Print($"# {template.Name}\n");
 	
-	if(template.PrintGenerateDateInfo)
-	{
+	if(template.PrintGenerateDateInfo){
 		var timeStamp = DateTimeOffset.UtcNow.ToString(System.Globalization.CultureInfo.GetCultureInfo("de-De"));
 		Print($"*Note: this readme was generated on {timeStamp} using {template.Source.Name}*\n\n");
 	}
 	
-	printSectionHeader("Description");
-	Print(template.Description);
-
-	printSectionHeader("Table of Contents");
-	printTableOfContents();
-
-	printSectionHeader("Features");
-	foreach(var feature in template.Features)
-	{
-		Print($"* {feature.shortDescription}\n");
+	foreach(var section in sections.Values){
+		sectionHeader(section.name);
+		section.content?.Invoke();
 	}
-	foreach(var feature in template.Features)
-	{
-		printSectionHeader(feature.name);
-		Print("TODO\n");
-	}
+	//End Generation
+
+	//Custom Content
+	void description() =>
 }
+This is a readme file template, intended for use in conjunction with logosyn.
+{
+	void feature1() =>
+}
+
+{
+	void feature2() =>
+}
+TODO: Long Description for Feature 2
+
