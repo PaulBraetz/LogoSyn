@@ -42,6 +42,7 @@ InterpreterInfo.PackageHash.Algorithm.Name:md5
 	}.Concat(featureSections)
 	.Concat(new (string name, int depth, Action content)[]
 	{
+		(name: "Installation", depth: 1, content:installation),
 		(name: "License", depth: 1, content:license),
 		(name: "Contributors", depth: 1, content:contributors)
 	})
@@ -115,13 +116,17 @@ InterpreterInfo.PackageHash.Algorithm.Name:md5
 	//End Generation
 
 	//Custom Content
+	void installation() =>
+}TODO: installation
+{
+
 	void description() =>
 }
 This is a readme file template, intended for use in conjunction with logosyn.
 {
 	void feature1() =>
 }
-
+Use templated sections like this one.
 {
 	void feature2() =>
 }

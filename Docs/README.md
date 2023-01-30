@@ -1,41 +1,46 @@
 # My Project
-*Note: this readme was generated on 30.01.2023 14:01:05 +00:00 using README_template.ls*
+*Note: this readme was generated on 30.01.2023 14:47:49 +00:00 using README_template.ls*
 
-## Description <a name="db42a4e1-045b-4b40-9205-ad30aedde68a"></a>
+## Description <a name="a878f2fa-3fab-4a2e-a778-04bf11ecfd72"></a>
 
 
 This is a readme file template, intended for use in conjunction with logosyn.
-## Table of Contents <a name="d8a1dd66-43b0-49d7-b542-5aaeeb9d23e9"></a>
+## Table of Contents <a name="b1a0d03c-42e4-4a20-aefd-df03d8dd253e"></a>
 
-1. [Description](#db42a4e1-045b-4b40-9205-ad30aedde68a)
+1. [Description](#a878f2fa-3fab-4a2e-a778-04bf11ecfd72)
 
-2. [Table of Contents](#d8a1dd66-43b0-49d7-b542-5aaeeb9d23e9)
+2. [Table of Contents](#b1a0d03c-42e4-4a20-aefd-df03d8dd253e)
 
-3. [Features](#5ed05ad1-4f11-4b36-b4d7-7b74021f0d3b)
+3. [Features](#8399af4d-ff19-4a8f-8250-4142ffcf1d7c)
 
-	3.1. [Templated Sections](#55d4d86c-e4f5-4aea-9444-077a5a5c5330)
+	3.1. [Templated Sections](#7326e31a-6fbb-406f-8faf-382e2c1f235b)
 
-	3.2. [Feature 2](#9b56470c-1c3b-4e49-aade-22e9c0426f33)
+	3.2. [Feature 2](#4896a13e-88e3-4cae-afd8-b5cff6741023)
 
-4. [License](#c517abc6-cc30-4119-ab9d-f9a3095909e9)
+4. [Installation](#4add3d1b-92be-4204-a473-fe07bc9b9ea2)
 
-5. [Contributors](#a0a96d55-59f5-49ff-8913-14ff05ba85da)
+5. [License](#356d39b3-a549-4534-9b0b-688ac17989db)
 
-## Features <a name="5ed05ad1-4f11-4b36-b4d7-7b74021f0d3b"></a>
+6. [Contributors](#a7a98aa8-9904-493c-9157-a80869457134)
+
+## Features <a name="8399af4d-ff19-4a8f-8250-4142ffcf1d7c"></a>
 
 * Templated Sections
 * Feature 2
-### Templated Sections <a name="55d4d86c-e4f5-4aea-9444-077a5a5c5330"></a>
+### Templated Sections <a name="7326e31a-6fbb-406f-8faf-382e2c1f235b"></a>
 
 
-
-### Feature 2 <a name="9b56470c-1c3b-4e49-aade-22e9c0426f33"></a>
+Use templated sections like this one.
+### Feature 2 <a name="4896a13e-88e3-4cae-afd8-b5cff6741023"></a>
 
 
 TODO: Long Description for Feature 2
-## License <a name="c517abc6-cc30-4119-ab9d-f9a3095909e9"></a>
+## Installation <a name="4add3d1b-92be-4204-a473-fe07bc9b9ea2"></a>
+
+TODO: installation
+## License <a name="356d39b3-a549-4534-9b0b-688ac17989db"></a>
 
 This software is licensed to you under the [MIT](LICENSE) license.
-## Contributors <a name="a0a96d55-59f5-49ff-8913-14ff05ba85da"></a>
+## Contributors <a name="a7a98aa8-9904-493c-9157-a80869457134"></a>
 
 * [Paul Brätz](https://github.com/PaulBraetz/ "Go to Profile")
