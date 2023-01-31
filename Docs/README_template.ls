@@ -1,13 +1,13 @@
 ParserInfo.PackageName:CSharpParser
-ParserInfo.PackageVersion:0.0.1
-ParserInfo.Arguments:
-ParserInfo.PackageHash:/vIX6UeP/VK9bkvHl9WnpQ==
+ParserInfo.PackageVersion:0.0.2
+ParserInfo.Arguments:-o 12
+ParserInfo.PackageHash:JRe2yB6NnLPN6YAWz2+c7A==
 ParserInfo.PackageHash.Algorithm.Name:md5
 
 InterpreterInfo.PackageName:CSharpInterpreter
-InterpreterInfo.PackageVersion:0.0.1
+InterpreterInfo.PackageVersion:0.0.2
 InterpreterInfo.Arguments:
-InterpreterInfo.PackageHash:sKNuClGw26LrIFcTW2fs/w==
+InterpreterInfo.PackageHash:o8JCmV9PGS9TRmwh1GE4TA==
 InterpreterInfo.PackageHash.Algorithm.Name:md5
 
 {
