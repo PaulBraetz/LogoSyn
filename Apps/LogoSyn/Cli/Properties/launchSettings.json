@@ -2,8 +2,8 @@
   "profiles": {
     "Cli Compile": {
       "commandName": "Project",
-      "commandLineArgs": ".\\source.ls",
-      "workingDirectory": "C:\\Users\\PC\\Documents\\Projects\\PaulBraetz\\LogoSyn\\Apps\\TestFiles"
+      "commandLineArgs": "-c -cs .\\Source.ls -cm Packages\\Manifest.json",
+      "workingDirectory": "J:\\Documents\\Projects\\PaulBraetz\\LogoSyn\\Apps\\TestFiles"
     },
     "Cli Package Echo": {
       "commandName": "Project",

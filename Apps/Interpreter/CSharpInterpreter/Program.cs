@@ -8,6 +8,7 @@ internal class Program
 	{
 		_parameters = Initialization.GetParameters();
 		_ = _parameters.TryAdd("s", "source", "Supplies the source document path.", File.Exists);
+		_ = _parameters.TryAdd("d", "dump", "When set, forces the interpreter to dump the contents of the intermediate file on compilation errors.", s => s == null);
 	}
 
 	private static readonly IParameterCollection _parameters;
@@ -19,6 +20,6 @@ internal class Program
 		using var source = arguments.TryGet("s", s => new FileInfo(s!), out var sourceFile) ?
 			sourceFile!.OpenRead() :
 			Console.OpenStandardInput();
-		Interpreter.Create().Interpret(source);
+		Interpreter.Create(arguments).Interpret(source);
 	}
 }

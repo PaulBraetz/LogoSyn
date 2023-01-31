@@ -1,5 +1,0 @@
-{
-    "Name":"CSharpParser",
-    "Version":"0.0.1",
-    "EntryPoint":"net6.0\\RhoMicro.LogoSyn.Apps.Parser.CSharpParser.exe"
-}

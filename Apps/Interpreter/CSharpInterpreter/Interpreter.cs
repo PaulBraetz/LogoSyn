@@ -10,10 +10,10 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Emit;
 
 using RhoMicro.LogoSyn.Apps.Common;
-using RhoMicro.LogoSyn.Libs.Common.Strings;
-using RhoMicro.LogoSyn.Libs.Dom.Dom;
 using RhoMicro.LogoSyn.Libs.Dom.Dom.Abstractions;
 using RhoMicro.LogoSyn.Libs.Interpreter.Abstractions;
+
+using Scli;
 
 namespace RhoMicro.LogoSyn.Apps.Interpreter.CSharpInterpreter;
 
@@ -22,9 +22,11 @@ namespace RhoMicro.LogoSyn.Apps.Interpreter.CSharpInterpreter;
 /// </summary>
 internal sealed class Interpreter
 {
-	public static IInterpreter Create()
+	public static IInterpreter Create(IArgumentCollection arguments)
 	{
-		var result = Interpreter<Discriminators.Default>.Create(Interpret);
+		var enableDump = arguments.TryGet("d", out var _);
+
+		var result = Interpreter<Discriminators.Default>.Create(s => Interpret(s, enableDump));
 
 		return result;
 	}
@@ -96,79 +98,58 @@ namespace {NAMESPACE}
 }";
 	#endregion
 
-	private static void Interpret(IDom<Discriminators.Default> dom)
+	private static void Interpret(IDom<Discriminators.Default> dom, Boolean enableDump)
 	{
 		dom.ThrowIfDefault(nameof(dom));
 
-		var result = Interpret(dom, onLiteral, onCode, onDisplay);
+		var syntaxTree = BuildSyntaxTree(dom);
 
-		CompileAndExecute(result);
-
-		static void onLiteral(IDomElement<Discriminators.Default> e, StringBuilder b)
-		{
-			Append($"/*{e.Position}->{e.GetEnd()}*/", b);
-			//TODO: strengthen escape
-			Append($"{PRINT_PRIVATE}.Invoke(@\"{(e.Slice.ToString() ?? String.Empty).Replace(@"""", @"""""")}\");", b);
-		}
-
-		static void onCode(IDomElement<Discriminators.Default> e, StringBuilder b)
-		{
-			Append($"/*{e.Position}->{e.GetEnd()}*/", b);
-			AppendSlice(e.Slice, b);
-		}
-
-		static void onDisplay(IDomElement<Discriminators.Default> e, StringBuilder b)
-		{
-			var expression = e.Slice.ToString();
-			if(!String.IsNullOrWhiteSpace(expression))
-			{
-				Append($"/*{e.Position}->{e.GetEnd()}*/", b);
-				Append($"{PRINT_PRIVATE}.Invoke({expression});", b);
-			}
-		}
+		CompileAndExecute(syntaxTree, enableDump);
 	}
 
-	private static String Interpret(IDom<Discriminators.Default> dom,
-					   Action<IDomElement<Discriminators.Default>, StringBuilder> onLiteral,
-					   Action<IDomElement<Discriminators.Default>, StringBuilder> onCode,
-					   Action<IDomElement<Discriminators.Default>, StringBuilder> onDisplay)
+	private static String BuildSyntaxTree(IDom<Discriminators.Default> dom)
 	{
 		var builder = new StringBuilder(FORMAT_0);
+		var line = 1;
 
 		foreach(var element in dom)
 		{
+			var slice = element.Slice.ToString() ?? String.Empty;
+
 			switch(element.Kind)
 			{
 				case Discriminators.Default.Literal:
-					onLiteral.Invoke(element, builder);
+					//TODO: strengthen escape
+					append($"{PRINT_PRIVATE}.Invoke(@\"{slice.Replace(@"""", @"""""")}\");");
+
 					break;
 				case Discriminators.Default.Code:
-					onCode.Invoke(element, builder);
+					append(slice);
+
 					break;
 				case Discriminators.Default.Display:
-					onDisplay.Invoke(element, builder);
+					var expression = element.Slice.ToString();
+					if(!String.IsNullOrWhiteSpace(expression))
+					{
+						append($"{PRINT_PRIVATE}.Invoke({expression});");
+					}
+
 					break;
+			}
+
+			line += slice.Count(c => c == '\n');
+
+			void append(String text)
+			{
+				_ = builder!.Append($"#line {line} \"Intermediate\"\r\n")
+					.Append(text)
+					.Append($"\r\n#line default\r\n#line hidden\r\n");
 			}
 		}
 
-		var syntaxTree = builder.Append(FORMAT_1).ToString();
+		var result = builder.Append(FORMAT_1).ToString();
 
-		return syntaxTree;
-	}
-
-	private static void AppendSlice(IStringSlice slice, StringBuilder builder)
-	{
-		slice.ThrowIfDefault(nameof(slice));
-		builder.ThrowIfDefault(nameof(builder));
-
-		Append(slice.ToString()!, builder);
-	}
-
-	private static void Append(String slice, StringBuilder builder)
-	{
-		builder.ThrowIfDefault(nameof(builder));
-
-		_ = builder!.Append(slice).Append("\r\n");
+		return result;
 	}
 
 	private static EmitResult Compile(String syntaxTreeText, Stream peStream)
@@ -207,7 +188,7 @@ namespace {NAMESPACE}
 		return result;
 	}
 
-	private static void CompileAndExecute(String syntaxTreeText)
+	private static void CompileAndExecute(String syntaxTreeText, Boolean enableDump)
 	{
 		using var peStream = new MemoryStream();
 		var result = Compile(syntaxTreeText, peStream);
@@ -261,8 +242,9 @@ namespace {NAMESPACE}
 			}
 		} else
 		{
-			using(var dump = File.CreateText(_dumpFileName))
+			if(enableDump)
 			{
+				using var dump = File.CreateText(_dumpFileName);
 				dump.Write(syntaxTreeText);
 			}
 

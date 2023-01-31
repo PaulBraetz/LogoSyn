@@ -32,16 +32,26 @@ internal static class Parser
 		var openParentheses = 0;
 		var kind = Discriminators.Default.Literal;
 
+		String? line;
+
 		if(lineOffset > 0)
 		{
-			var offsetChars = Enumerable.Range(0, lineOffset).Select(i => '\n');
-			var offsetSlice = String.Concat(offsetChars).Slice();
-			var offsetElement = new DomElement<Discriminators.Default>(Discriminators.Default.Ignore, offsetSlice, position);
+			while(lineOffset > 0)
+			{
+				_ = builder.Append('\n');
+				lineCount++;
+				lineOffset--;
+			}
+			
+			var offsetSlice = builder.ToString().Slice();
+			var offsetElement = new DomElement<Discriminators.Default>(Discriminators.Default.Ignore, offsetSlice, 0);
 			dom.Add(offsetElement);
-			lineCount = position = lineOffset;
+
+			_ = builder.Clear();
+
+			position = lineCount;
 		}
 
-		String? line;
 		while((line = stream.ReadLine()) != null)
 		{
 			lineCount++;

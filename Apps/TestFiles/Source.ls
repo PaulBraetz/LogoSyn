@@ -1,17 +1,17 @@
 ParserInfo.PackageName:CSharpParser
-ParserInfo.PackageVersion:0.0.1
-ParserInfo.Arguments:
-ParserInfo.PackageHash:HPKCm6IuUmqWRStXf/fyTu639yZkoMemREspa1Q4ykQLi/V5OSP4KkNbtfkBzGU4DrcbN45Cbc/qb+6qcW4DBg==
-ParserInfo.PackageHash.Algorithm.Name:sha512
+ParserInfo.PackageVersion:0.0.2
+ParserInfo.Arguments:-o 12
+ParserInfo.PackageHash:JRe2yB6NnLPN6YAWz2+c7A==
+ParserInfo.PackageHash.Algorithm.Name:md5
 
 InterpreterInfo.PackageName:CSharpInterpreter
-InterpreterInfo.PackageVersion:0.0.1
+InterpreterInfo.PackageVersion:0.0.2
 InterpreterInfo.Arguments:
-InterpreterInfo.PackageHash:DRNZZM/zoG/x4HKsvMQX+uvA4NXqk3t5dPM1okhMIOfy1f18Gb9pe2CNLnSCw62hJZuZQ32y07CqQV3zCsIAHQ==
-InterpreterInfo.PackageHash.Algorithm.Name:sha512
+InterpreterInfo.PackageHash:o8JCmV9PGS9TRmwh1GE4TA==
+InterpreterInfo.PackageHash.Algorithm.Name:md5
 
 {
-    //DocumentContext.IntermediateResultFilePath = @"Document.cs";
+    DocumentContext.IntermediateResultFilePath = @"Document.cs";
     DocumentContext.TargetFilePath = @"Target.md";
 }# Test Source Document #
 
